@@ -1,3 +1,25 @@
+# React-Neighborhood-map
+
+This project is part of the Udacity Web Developer Course. The goal of this project is to create a react app that utilizes the Google Map API to show my neighborhood or a neighborhood I would like to visit.
+
+The functionality of this map includes:
+- Map markers to identify popular locations or places you’d like to visit
+- A search function to easily discover these locations
+- A list view to support simple browsing of all locations.
+- Third-party APIs that provide additional information about each of these locations (such as StreetView images, Wikipedia articles, Yelp reviews, etc)
+
+## Libraries Used
+
+- React
+- babel
+- jQuery
+- sass
+- Google maps
+
+## To Do
+
+[]
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
