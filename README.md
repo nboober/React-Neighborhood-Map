@@ -28,6 +28,8 @@ The functionality of this map includes:
 - [ ] Implement a filter option to filter this list in the list view bar and their points respectively
 - [ ] Add on click functionality to the markers so that third party information(ex. yelp, Wikipedia, Flickr images) about the location are displayed when the markers are clicked on. This on lick functionality should be functional when selecting the marker or the location from the list view bar.
 
+## Create-React-App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
