@@ -20,7 +20,7 @@ The functionality of this map includes:
 
 - [x] Create Repository and base app with create-React-apps
 - [x] Update README file with project information and TODO listen
-- [ ] Import dependencies such as jQuery, and Sass into my react app
+- [x] Import dependencies such as jQuery, and Sass into my react app
 - [ ] Create a component to hold a full screen map
 - [ ] Create a component to hold the list view for the search bar and resulted locations. This component will only become visible through a hamburger icon in phone sized displays. Otherwise it will always be visible
 - [ ] Write code in the main App component to render at least 5 locations of interest within or nearby the neighborhood
