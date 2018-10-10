@@ -25,8 +25,8 @@ The functionality of this map includes:
 - [x] Create a component to hold the list view for the search bar and resulted locations
 - [x] Make the App responsive to different screen sizes
 - [ ] Render the Map using the Map Component
-- [ ] Render a base list view bar using the list component
-- [ ] Make the list view bar hidable and visible using a hamburger icon
+- [x] Render a base list view bar using the list component
+- [x] Make the list view bar hidable and visible using a hamburger icon
 - [ ] Write code in the main App component to render at least 5 locations of interest within or nearby the neighborhood
 - [ ] Implement these locations to be viewable in the list view bar
 - [ ] Implement a filter option to filter this list in the list view bar and their points respectively

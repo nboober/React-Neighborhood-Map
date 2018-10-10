@@ -1,11 +1,58 @@
+$dark-gray:  rgb(50, 48, 50);
+
 @media screen and (max-width: 768px){
+  * {
+    margin: 0;
+  }
+.App-header{
+  background-color: $dark-gray;
+}
+
   .hamburger{
     width: 25px;
+  }
+
+  .listViewBar{
+    background-color: $dark-gray;
+    color: white;
+    width: 25%;
+    height: 100%;
+    float: left;
+    position: fixed;
+  }
+
+  .mapArea{
+    width: auto;
+    color: black;
+    float: right;
   }
 }
 
 @media screen and (min-width: 769px){
+  * {
+    margin: 0;
+  }
+
+  .App-header{
+    background-color: $dark-gray;
+  }
+
   .hamburger{
     width: 25px;
+  }
+
+.listViewBar{
+  background-color: $dark-gray;
+  color: white;
+  width: 25%;
+  height: 100%;
+  float: left;
+  position: fixed;
+  }
+
+  .mapArea{
+    width: auto;
+    color: black;
+    float: right;
   }
 }
