@@ -23,7 +23,7 @@ The functionality of this map includes:
 - [x] Import dependencies such as jQuery, and Sass into my react app
 - [x] Create a component to hold a full screen map
 - [x] Create a component to hold the list view for the search bar and resulted locations
-- [ ] Make the App responsive to different screen sizes
+- [x] Make the App responsive to different screen sizes
 - [ ] Render the Map using the Map Component
 - [ ] Render a base list view bar using the list component
 - [ ] Make the list view bar hidable and visible using a hamburger icon

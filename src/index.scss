@@ -1,3 +1,11 @@
-.hamburger{
-  width: 25px;
+@media screen and (max-width: 768px){
+  .hamburger{
+    width: 25px;
+  }
+}
+
+@media screen and (min-width: 769px){
+  .hamburger{
+    width: 25px;
+  }
 }
