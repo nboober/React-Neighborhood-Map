@@ -24,7 +24,7 @@ class App extends Component {
         <header className="App-header">
           <img className="hamburger" src={hamburger} alt="hamburger icon" />
         </header>
-        <div className="listViewBar">
+        <div className="listViewBar" style={{display: "none"}}>
           <List/>
         </div>
         <div className="mapArea">

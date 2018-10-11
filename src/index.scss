@@ -4,6 +4,7 @@ $dark-gray:  rgb(50, 48, 50);
   * {
     margin: 0;
   }
+
 .App-header{
   background-color: $dark-gray;
 }
@@ -23,9 +24,10 @@ $dark-gray:  rgb(50, 48, 50);
   }
 
   .mapArea{
-    width: auto;
-    color: black;
-    float: right;
+    width: 100vw;
+    height: 100vh;
+    // color: black;
+    // float: right;
   }
 }
 
@@ -53,8 +55,9 @@ $dark-gray:  rgb(50, 48, 50);
   }
 
   .mapArea{
-    width: auto;
-    color: black;
-    float: right;
+    width: 100vw;
+    height: 100vh;
+    // color: black;
+    // float: right;
   }
 }
