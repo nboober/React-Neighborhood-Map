@@ -3,13 +3,13 @@ import hamburger from './Hamburger_icon.png';
 import './App.css';
 import $ from 'jquery';
 import { List } from './List';
-import { Map } from './Map';
+import { MapContainer } from './Map';
 
 class App extends Component {
 
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
-      $('.listViewBar').toggle();
+      $('.listViewBar').slideToggle(1000);
     })
   }
 
@@ -28,7 +28,7 @@ class App extends Component {
           <List/>
         </div>
         <div className="mapArea">
-          <Map/>
+          <MapContainer/>
         </div>
       </div>
     );
