@@ -23,12 +23,10 @@ $dark-gray:  rgb(50, 48, 50);
     position: fixed;
   }
 
-  .mapArea{
+  #map{
     width: 100vw;
     height: 100vh;
-    // color: black;
-    // float: right;
-  }
+    }
 }
 
 @media screen and (min-width: 769px){
@@ -54,10 +52,8 @@ $dark-gray:  rgb(50, 48, 50);
   position: fixed;
   }
 
-  .mapArea{
-    width: 100vw;
-    height: 100vh;
-    // color: black;
-    // float: right;
+#map{
+  width: 100vw;
+  height: 100vh;
   }
 }
