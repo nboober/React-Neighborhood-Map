@@ -3,7 +3,7 @@ import hamburger from './Hamburger_icon.png';
 import './App.css';
 import $ from 'jquery';
 import { List } from './List';
-import { MapContainer } from './Map';
+import { MapContainer } from './mapContainer';
 
 class App extends Component {
 
