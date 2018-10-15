@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
-//I found the Google-maps-react library from https://www.npmjs.com/package/google-maps-react
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-// import {Map} from './map';
+//I found the react-google-maps module from https://medium.com/@yelstin.fernandes/render-a-map-component-using-react-google-maps-5f7fb3e418bb
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
 
 export class MapContainer extends Component{
 
   render() {
-    const style = {
-      width: '100vw',
-      height: '100vh'
-    }
-
-    if (!this.props.loaded) {
-     return <div>Loading Map...</div>
-     }
+    const GoogleMapExample = withGoogleMap(props => (
+     <GoogleMap
+       defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
+       defaultZoom = { 13 }
+     >
+     </GoogleMap>
+    ));
 
     return (
-      <div style={{style}}>
-        <Map google={this.props.google}/>
+      <div>
+      <GoogleMapExample
+        containerElement={ <div style={{ height: `500px`, width: '500px' }} /> }
+        mapElement={ <div style={{ height: `100%` }} /> }
+      />
       </div>
     )
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: ('AIzaSyC9Mj0z9LIsiHif3l_FiDMJL4l4o083lOA')
-})(MapContainer)
