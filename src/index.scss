@@ -23,9 +23,14 @@ $dark-gray:  rgb(50, 48, 50);
     position: fixed;
   }
 
+  .mapArea{
+    position: absolute;
+  }
+
   #map{
     width: 100vw;
     height: 100vh;
+    position: absolute;
     }
 }
 
@@ -52,8 +57,13 @@ $dark-gray:  rgb(50, 48, 50);
   position: fixed;
   }
 
+  .mapArea{
+    position: absolute;
+  }
+
 #map{
   width: 100vw;
   height: 100vh;
+  position: absolute;
   }
 }

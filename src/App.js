@@ -27,7 +27,7 @@ class App extends Component {
         <div className="listViewBar" style={{display: "none"}}>
           <List/>
         </div>
-        <div className="mapArea">
+        <div className="mapArea" >
           <MapContainer/>
         </div>
       </div>
