@@ -7,6 +7,9 @@ $dark-gray:  rgb(50, 48, 50);
 
 .App-header{
   background-color: $dark-gray;
+  position: relative;
+  z-index: 10;
+  width: 100%;
 }
 
   .hamburger{
@@ -18,11 +21,9 @@ $dark-gray:  rgb(50, 48, 50);
     background-color: $dark-gray;
     color: white;
     width: 25%;
-    height: 80%;
-    float: left;
-    position: fixed;
+    height: 95%;
+    position: absolute;
     z-index: 10;
-    overflow-y: scroll;
   }
 
 }
@@ -34,6 +35,9 @@ $dark-gray:  rgb(50, 48, 50);
 
   .App-header{
     background-color: $dark-gray;
+    position: relative;
+    z-index: 10;
+    width: 100%;
   }
 
   .hamburger{
@@ -44,12 +48,10 @@ $dark-gray:  rgb(50, 48, 50);
 .listViewBar{
   background-color: $dark-gray;
   color: white;
-  width: 25%;
-  height: 80%;
-  float: left;
-  position: fixed;
+  width: 15%;
+  height: 95vh;
+  position: absolute;
   z-index: 10;
-  overflow-y: scroll;
   }
 
 }
