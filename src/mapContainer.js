@@ -7,10 +7,10 @@ export class MapContainer extends Component{
   render() {
     const MyGoogleMap = withGoogleMap(props => (
      <GoogleMap
-       defaultCenter = { { lat: 39.1883841, lng: -77.2407077 } }
+       defaultCenter = { { lat: this.props.lat, lng: this.props.lng } }
        defaultZoom = { 13 }
      >
-     {props.isMarkerShown && <Marker position={{ lat: 39.1883841, lng: -77.2407077 }} />}
+     {props.isMarkerShown && <Marker position={{ lat: this.props.lat, lng: this.props.lng }} />}
      </GoogleMap>
     ));
 
