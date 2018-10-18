@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //I found the react-google-maps module from https://medium.com/@yelstin.fernandes/render-a-map-component-using-react-google-maps-5f7fb3e418bb
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 
 export class MapContainer extends Component{
 
@@ -10,7 +11,7 @@ export class MapContainer extends Component{
        defaultCenter = { { lat: this.props.center.lat, lng: this.props.center.lng } }
        defaultZoom = { 13 }
      >
-     {props.isMarkerShown && <Marker position={{ lat: this.props.center.lat, lng: this.props.center.lng }} />}
+     <Marker position={{ lat: this.props.center.lat, lng: this.props.center.lng }} />
      </GoogleMap>
     ));
 
