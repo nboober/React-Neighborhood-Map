@@ -28,7 +28,7 @@ The functionality of this map includes:
 - [x] Render the Map using the Map Component
 - [x] Render a base list view bar using the list component
 - [x] Make the list view bar hidable and visible using a hamburger icon
-- [ ] Write code to render at least 5 locations of interest within or nearby the neighborhood
+- [x] Write code to render at least 5 locations of interest within or nearby the neighborhood
 - [ ] Implement these locations to be viewable in the list view bar
 - [ ] Implement a filter option to filter this list in the list view bar and their points respectively
 - [ ] Add on click functionality to the markers so that third party information(ex. yelp, Wikipedia, Flickr images) about the location are displayed when the markers are clicked on. This on lick functionality should be functional when selecting the marker or the location from the list view bar.
