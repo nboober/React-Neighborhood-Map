@@ -22,10 +22,6 @@ class App extends Component {
 
   render() {
 
-    $('.hamburger').on('click', ()=>{
-      $('.listViewBar').toggle();
-    })
-
     const locations = [
       {
         name: "Daly Elementary School",
