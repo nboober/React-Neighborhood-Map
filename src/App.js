@@ -7,12 +7,6 @@ import { List } from './List';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {center: {lat: 39.1883841,
-                          lng: -77.2407077}
-                }
-  }
 
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
@@ -21,6 +15,11 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      width: '100%',
+      height: 'auto'
+    }
 
     const locations = [
       {
@@ -54,13 +53,22 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img className="hamburger" src={hamburger} alt="hamburger icon" />
+            <div className="title">My Neighborhood App</div>
           <div className="listViewBar" style={{display: "none"}}>
             <List/>
           </div>
         </header>
 
-        <div className="mapArea" >
-          <Map google={this.props.google} zoom={14}>
+        <div className="mapArea">
+          <Map google={this.props.google} zoom={14}
+            style={style}
+            initialCenter={{
+              lat: 39.1883841,
+              lng: -77.2407077
+            }}
+            zoom={14}
+            onClick={this.onMapClicked}
+          >
 
             <Marker onClick={this.onMarkerClick}
                     name={'Current location'} />

@@ -11,17 +11,21 @@ $dark-gray:  rgb(50, 48, 50);
   z-index: 10;
   width: 100%;
 }
-
+.title{
+  color: white;
+  float: right;
+  font-size: 200%
+}
   .hamburger{
-    width: 35px;
+    width: 8%;
     padding: 5px;
   }
 
   .listViewBar{
     background-color: $dark-gray;
     color: white;
-    width: 25%;
-    height: 95%;
+    width: 15%;
+    height: 95vh;
     position: absolute;
     z-index: 10;
   }
@@ -39,9 +43,13 @@ $dark-gray:  rgb(50, 48, 50);
     z-index: 10;
     width: 100%;
   }
-
+  .title{
+    color: white;
+    float: right;
+    font-size: 300%
+  }
   .hamburger{
-    width: 35px;
+    width: 3%;
     padding: 5px;
   }
 
