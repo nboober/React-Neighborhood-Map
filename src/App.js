@@ -17,7 +17,6 @@ class App extends Component {
     }
   };
 
-
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
@@ -85,7 +84,7 @@ class App extends Component {
           </div>
         </header>
 
-        <div className="mapArea">
+        <div className="mapArea" ref='map'>
           <Map google={this.props.google} zoom={15}
             style={style}
             initialCenter={
@@ -95,7 +94,19 @@ class App extends Component {
           >
 
             <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                    name={'Current location'}
+                    title={'Current Location'}
+                    />
+
+             {locations.map(marker => (
+              <Marker
+                key = {marker}
+                title = {marker.title}
+                name = {marker.name}
+                position = {marker.position}
+                onClick={this.onMarkerClick}
+              />
+             ))}
 
             <InfoWindow
                 marker={this.state.activeMarker}
