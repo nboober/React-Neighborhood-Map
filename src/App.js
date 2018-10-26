@@ -7,12 +7,38 @@ import { List } from './List';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class App extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+    initialCenter: {
+      lat: 39.1883841,
+      lng: -77.2407077
+    }
+  };
+
 
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
     })
   }
+
+  onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
 
   render() {
 
@@ -60,24 +86,24 @@ class App extends Component {
         </header>
 
         <div className="mapArea">
-          <Map google={this.props.google} zoom={14}
+          <Map google={this.props.google} zoom={15}
             style={style}
-            initialCenter={{
-              lat: 39.1883841,
-              lng: -77.2407077
-            }}
-            zoom={14}
+            initialCenter={
+              this.state.initialCenter
+            }
             onClick={this.onMapClicked}
           >
 
             <Marker onClick={this.onMarkerClick}
                     name={'Current location'} />
 
-            <InfoWindow onClose={this.onInfoWindowClose}>
-                <div>
-                  <h1>My First InfoWindow</h1>
-                </div>
-            </InfoWindow>
+            <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}>
+                  <div>
+                    <h1>{this.state.selectedPlace.name}</h1>
+                  </div>
+              </InfoWindow>
           </Map>
         </div>
       </div>
