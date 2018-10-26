@@ -6,7 +6,7 @@ import { List } from './List';
 //I found the google-maps-react module from https://www.npmjs.com/package/google-maps-react
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-class App extends Component {
+export class App extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
@@ -46,7 +46,7 @@ class App extends Component {
       height: 'auto'
     }
 
-    const locations = [
+    let locations = [
       {
         name: "My Neighborhood",
         title: "My Neighborhood",
@@ -84,8 +84,9 @@ class App extends Component {
         <header className="App-header">
           <img className="hamburger" src={hamburger} alt="hamburger icon" />
             <div className="title">My Neighborhood App</div>
+
           <div className="listViewBar" style={{display: "none"}}>
-            <List/>
+            <List locations= {locations} center={this.state.initialCenter}/>
           </div>
         </header>
 
