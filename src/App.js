@@ -48,6 +48,11 @@ class App extends Component {
 
     const locations = [
       {
+        name: "My Neighborhood",
+        title: "My Neighborhood",
+        position: this.state.initialCenter
+      },
+      {
         name: "Daly Elementary School",
         title: "Daly Elementary School",
         position: {lat: 39.188864, lng: -77.2344043}
@@ -93,14 +98,9 @@ class App extends Component {
             onClick={this.onMapClicked}
           >
 
-            <Marker onClick={this.onMarkerClick}
-                    name={'Current location'}
-                    title={'Current Location'}
-                    />
-
              {locations.map(marker => (
               <Marker
-                key = {marker}
+                key = {marker.name}
                 title = {marker.title}
                 name = {marker.name}
                 position = {marker.position}
