@@ -7,15 +7,19 @@ import { List } from './List';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 export class App extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-    initialCenter: {
-      lat: 39.1883841,
-      lng: -77.2407077
-    }
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      initialCenter: {
+        lat: 39.1883841,
+        lng: -77.2407077
+    },
+      input: ""
+  }
+}
 
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
@@ -23,10 +27,10 @@ export class App extends Component {
     })
   }
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, position, e) =>
   this.setState({
     selectedPlace: props,
-    activeMarker: marker,
+    activeMarker: position,
     showingInfoWindow: true
   });
 
@@ -37,6 +41,12 @@ export class App extends Component {
         activeMarker: null
       })
     }
+  };
+
+  search = (e) => {
+    this.setState({
+      input: e.target.value
+    });
   };
 
   render() {
@@ -86,7 +96,10 @@ export class App extends Component {
             <div className="title">My Neighborhood App</div>
 
           <div className="listViewBar" style={{display: "none"}}>
-            <List locations= {locations} center={this.state.initialCenter}/>
+            <form>
+              <input type="text" placeholder="Search By Location Here..." onChange={this.search} value={this.state.input}/>
+            </form>
+            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {locations} center={this.state.initialCenter} onHandleClick={this.onMarkerClick}/>
           </div>
         </header>
 
