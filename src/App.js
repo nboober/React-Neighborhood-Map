@@ -18,7 +18,7 @@ export class App extends Component {
         lng: -77.2407077
     },
       input: ""
-  }
+    }
 }
 
   componentDidMount() {
@@ -41,12 +41,6 @@ export class App extends Component {
         activeMarker: null
       })
     }
-  };
-
-  search = (e) => {
-    this.setState({
-      input: e.target.value
-    });
   };
 
   render() {
@@ -89,6 +83,26 @@ export class App extends Component {
       }
     ]
 
+    let searchedList = [];
+    console.log(searchedList);
+
+    for(let i = 0; i < locations.length; i++){
+      if(locations[i].name.match(this.state.input)){
+        console.log(locations[i]);
+        searchedList.push(locations[i]);
+        console.log(searchedList);
+      }
+    }
+
+    let search = (e) => {
+      this.setState({
+        input: e.target.value,
+        showingInfoWindow: false
+      })
+    };
+
+
+
     return (
       <div className="App">
         <header className="App-header">
@@ -97,9 +111,9 @@ export class App extends Component {
 
           <div className="listViewBar" style={{display: "none"}}>
             <form>
-              <input type="text" placeholder="Search By Location Here..." onChange={this.search} value={this.state.input}/>
+              <input type="text" placeholder="Search By Location Here..." onChange={search} value={this.state.input}/>
             </form>
-            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {locations} center={this.state.initialCenter} onHandleClick={this.onMarkerClick}/>
+            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleClick={this.onMarkerClick}/>
           </div>
         </header>
 
@@ -112,7 +126,7 @@ export class App extends Component {
             onClick={this.onMapClicked}
           >
 
-             {locations.map(marker => (
+             {searchedList.map(marker => (
               <Marker
                 key = {marker.name}
                 title = {marker.title}
