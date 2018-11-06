@@ -52,32 +52,32 @@ export class App extends Component {
 
     let locations = [
       {
-        name: "My Neighborhood",
+        name: "my neighborhood",
         title: "My Neighborhood",
         position: this.state.initialCenter
       },
       {
-        name: "Daly Elementary School",
+        name: "daly elementary school",
         title: "Daly Elementary School",
         position: {lat: 39.188864, lng: -77.2344043}
       },
       {
-        name: 'Neelsville Middle School',
+        name: 'neelsville middle school',
         title: 'Neelsville Middle School',
         position: {lat: 39.194103, lng: -77.2429888}
       },
       {
-        name: 'Cider Barrel Landmark',
+        name: 'cider barrel landmark',
         title: 'Cider Barrel Landmark',
         position: {lat: 39.190063, lng: -77.241919}
       },
       {
-        name: 'Best Buy',
+        name: 'best buy',
         title: 'Best Buy',
         position: {lat: 39.1988538, lng: -77.2484713}
       },
       {
-        name: 'Jersey Mike\'s Subs',
+        name: 'jersey mike\'s subs',
         title: 'Jersey Mike\'s Subs',
         position: {lat: 39.200285, lng: -77.2466828}
       }
@@ -140,7 +140,7 @@ export class App extends Component {
                 marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                   <div>
-                    <h1>{this.state.selectedPlace.name}</h1>
+                    <h1>{this.state.selectedPlace.title}</h1>
                   </div>
               </InfoWindow>
           </Map>
