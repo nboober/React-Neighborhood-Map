@@ -5,8 +5,12 @@ import $ from 'jquery';
 export class List extends Component{
   constructor(props){
     super(props);
-    this.state= {input: ""};
-  }
+    this.state = {
+      showingInfoWindow: this.props.infoWindow,
+      activeMarker: this.props.marker,
+      selectedPlace: this.props.place,
+    }
+}
 
   componentDidMount() {
     $('.listSelection').on('mouseenter', (event)=>{
