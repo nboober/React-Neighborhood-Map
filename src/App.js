@@ -47,18 +47,22 @@ export class App extends Component {
   };
 
   getVenues = () =>{
+    let lat = this.state.initialCenter.lat;
+    let lng = this.state.initialCenter.lng;
+    let latlng = lat + "," + lng;
+
     const endPoint = "https://api.foursquare.com/v2/venues/explore?"
     const parameters = {
       client_id: "LRHE1U0H3SYJJCP1IODLD03CZS503LZ4LUYCXHVC3J51RKBM",
       client_secret: "DX4B5ES0CY51EQWZGPGCR5E2S5QW3WXVCU3TJMS3RGYA1AIZ",
       query: "food",
-      ll: "39.1883841,-77.2407077",
+      ll: latlng,
       v: "20182507"
     }
 
     axios.get(endPoint + new URLSearchParams(parameters))
       .then(response => {
-        console.log(response);
+        console.log(response.data.response.groups[0].items);
       }).catch(error => {
         console.log("ERROR " + error);
       })
