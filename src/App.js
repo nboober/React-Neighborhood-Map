@@ -19,8 +19,8 @@ export class App extends Component {
         lng: -77.2407077
     },
       input: "",
+      venues: []
     }
-    this.getVenues = this.getVenues.bind(this);
 }
 
   componentDidMount() {
@@ -57,11 +57,15 @@ export class App extends Component {
       client_secret: "DX4B5ES0CY51EQWZGPGCR5E2S5QW3WXVCU3TJMS3RGYA1AIZ",
       query: "food",
       ll: latlng,
-      v: "20182507"
+      v: "20182507",
+      limit: 6
     }
 
     axios.get(endPoint + new URLSearchParams(parameters))
       .then(response => {
+        this.setState({
+          venues: response.data.response.groups[0].items
+        })
         console.log(response.data.response.groups[0].items);
       }).catch(error => {
         console.log("ERROR " + error);
@@ -76,46 +80,16 @@ export class App extends Component {
       height: 'auto'
     }
 
-    let locations = [
-      {
-        name: "my neighborhood",
-        title: "My Neighborhood",
-        position: this.state.initialCenter
-      },
-      {
-        name: "daly elementary school",
-        title: "Daly Elementary School",
-        position: {lat: 39.188864, lng: -77.2344043}
-      },
-      {
-        name: 'neelsville middle school',
-        title: 'Neelsville Middle School',
-        position: {lat: 39.194103, lng: -77.2429888}
-      },
-      {
-        name: 'cider barrel landmark',
-        title: 'Cider Barrel Landmark',
-        position: {lat: 39.190063, lng: -77.241919}
-      },
-      {
-        name: 'best buy',
-        title: 'Best Buy',
-        position: {lat: 39.1988538, lng: -77.2484713}
-      },
-      {
-        name: 'jersey mike\'s subs',
-        title: 'Jersey Mike\'s Subs',
-        position: {lat: 39.200285, lng: -77.2466828}
-      }
-    ]
-
     let searchedList = [];
     console.log(searchedList);
 
-    for(let i = 0; i < locations.length; i++){
-      if(locations[i].name.match(this.state.input)){
-        console.log(locations[i]);
-        searchedList.push(locations[i]);
+    let venues = this.state.venues;
+    console.log(venues);
+
+    for(let i = 0; i < venues.length; i++){
+      if(venues[i].venue.name.match(this.state.input)){
+        console.log(venues[i]);
+        searchedList.push(venues[i]);
         console.log(searchedList);
       }
     }
@@ -153,11 +127,11 @@ export class App extends Component {
           >
 
              {searchedList.map(marker => (
+
               <Marker
-                key = {marker.name}
-                title = {marker.title}
-                name = {marker.name}
-                position = {marker.position}
+                key = {marker.venue.id}
+                name = {marker.venue.name}
+                position = {marker.venue.location}
                 onClick={this.onMarkerClick}
               />
              ))}
@@ -166,7 +140,7 @@ export class App extends Component {
                 marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                   <div>
-                    <h1>{this.state.selectedPlace.title}</h1>
+                    <h1>{this.state.selectedPlace.name}</h1>
                   </div>
               </InfoWindow>
           </Map>

@@ -27,7 +27,7 @@ export class List extends Component{
         {this.props.locations.map(list => (
           <div onClick={(props, position, e) => this.props.onHandleClick(list)} key={list.name} className="listSelection">
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
-            <p>{list.title}</p>
+            <p>{list.venue.name}</p>
            </div>
          ))}
       </div>
