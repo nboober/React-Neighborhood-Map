@@ -18,15 +18,16 @@ export class App extends Component {
         lat: 39.1883841,
         lng: -77.2407077
     },
-      input: ""
+      input: "",
     }
+    this.getVenues = this.getVenues.bind(this);
 }
 
   componentDidMount() {
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
-    });
-    this.getVenues();
+    })
+    this.getVenues()
   }
 
   onMarkerClick = (props, position, e) =>
@@ -46,21 +47,20 @@ export class App extends Component {
   };
 
   getVenues = () =>{
-    const endPoint = "https://api.foursquare.com/v2/venues/explore"
+    const endPoint = "https://api.foursquare.com/v2/venues/explore?"
     const parameters = {
       client_id: "LRHE1U0H3SYJJCP1IODLD03CZS503LZ4LUYCXHVC3J51RKBM",
       client_secret: "DX4B5ES0CY51EQWZGPGCR5E2S5QW3WXVCU3TJMS3RGYA1AIZ",
       query: "food",
-      near: this.state.initialCenter,
+      ll: "39.1883841,-77.2407077",
       v: "20182507"
     }
 
-    fetch(endPoint + new URLSearchParams(parameters))
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(JSON.stringify(myJson));
+    axios.get(endPoint + new URLSearchParams(parameters))
+      .then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log("ERROR " + error);
       })
 
   }
