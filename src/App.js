@@ -15,11 +15,12 @@ export class App extends Component {
       activeMarker: {},
       selectedPlace: {},
       initialCenter: {
-        lat: 39.1883841,
-        lng: -77.2407077
-    },
+        lat: 39.18839,
+        lng: -77.23853
+      },
       input: "",
-      venues: []
+      venues: [],
+      venuePhotos: []
     }
 }
 
@@ -27,7 +28,8 @@ export class App extends Component {
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
     })
-    this.getVenues()
+    this.getVenues();
+    this.getVenuePhotos();
   }
 
   onMarkerClick = (props, position, e) =>
@@ -58,7 +60,8 @@ export class App extends Component {
       query: "food",
       ll: latlng,
       v: "20182507",
-      limit: 6
+      limit: 6,
+      venuePhotos: 1
     }
 
     axios.get(endPoint + new URLSearchParams(parameters))
@@ -73,7 +76,45 @@ export class App extends Component {
 
   }
 
+  getVenuePhotos = () =>{
+
+    let venue_id = "4a8f42d4f964a520941420e3";
+
+    const endPoint = "https://api.foursquare.com/v2/venues/"
+    const parameters = {
+      client_id: "LRHE1U0H3SYJJCP1IODLD03CZS503LZ4LUYCXHVC3J51RKBM",
+      client_secret: "DX4B5ES0CY51EQWZGPGCR5E2S5QW3WXVCU3TJMS3RGYA1AIZ",
+      v: "20182507"
+    }
+
+    let venues = this.state.venues;
+    let id = [];
+
+
+    for(let i = 0; i<venues.length; i++){
+      console.log(venues[i].venue.id);
+      id.push(venues[i].venue.id);
+    }
+
+    axios.get(endPoint + venue_id + "/photos?" + new URLSearchParams(parameters))
+      .then(response => {
+        console.log(response.data.response.photos.items[0]);
+        this.setState({
+          venuePhotos: response.data.response.photos.items[0]
+        })
+      }).catch(error => {
+        console.log("ERROR " + error);
+      })
+  }
+
   render() {
+
+    console.log(this.state.venuePhotos);
+    let pre = this.state.venuePhotos.prefix;
+    console.log(pre);
+    let suff = this.state.venuePhotos.suffix;
+    let img = pre + "300x500" + suff;
+    console.log(pre + "300x500" + suff);
 
     const style = {
       width: '100%',
@@ -101,8 +142,6 @@ export class App extends Component {
       })
     };
 
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -118,7 +157,7 @@ export class App extends Component {
         </header>
 
         <div className="mapArea" ref='map'>
-          <Map google={this.props.google} zoom={15}
+          <Map google={this.props.google} zoom={14}
             style={style}
             initialCenter={
               this.state.initialCenter
@@ -141,6 +180,7 @@ export class App extends Component {
                 visible={this.state.showingInfoWindow}>
                   <div>
                     <h1>{this.state.selectedPlace.name}</h1>
+                    <img src={img}/>
                   </div>
               </InfoWindow>
           </Map>
