@@ -113,8 +113,8 @@ export class App extends Component {
     let pre = this.state.venuePhotos.prefix;
     console.log(pre);
     let suff = this.state.venuePhotos.suffix;
-    let img = pre + "300x500" + suff;
-    console.log(pre + "300x500" + suff);
+    let img = pre + "200x200" + suff;
+    console.log(pre + "200x200" + suff);
 
     const style = {
       width: '100%',
@@ -180,7 +180,7 @@ export class App extends Component {
                 visible={this.state.showingInfoWindow}>
                   <div>
                     <h1>{this.state.selectedPlace.name}</h1>
-                    <img src={img}/>
+                    <img src={img} alt={this.state.selectedPlace.name}/>
                   </div>
               </InfoWindow>
           </Map>
