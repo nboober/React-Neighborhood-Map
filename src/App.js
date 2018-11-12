@@ -25,13 +25,17 @@ export class App extends Component {
 }
 
   componentDidMount() {
+    //Controls Hamburger Icon
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
-    })
+    });
+    //Calls getValues function
     this.getVenues();
+    //Calls getVenuePhotos function
     this.getVenuePhotos();
   }
 
+  //Marker Click Function
   onMarkerClick = (props, position, e) =>
   this.setState({
     selectedPlace: props,
@@ -39,6 +43,7 @@ export class App extends Component {
     showingInfoWindow: true
   });
 
+  //Map Click Function
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -48,6 +53,7 @@ export class App extends Component {
     }
   };
 
+  //Get a list of Venues from Foursquare depending on the initialCenter Location
   getVenues = () =>{
     let lat = this.state.initialCenter.lat;
     let lng = this.state.initialCenter.lng;
@@ -76,6 +82,7 @@ export class App extends Component {
 
   }
 
+  //Get a list of Photos from Foursquare
   getVenuePhotos = () =>{
 
     let venue_id = "4a8f42d4f964a520941420e3";
@@ -109,24 +116,36 @@ export class App extends Component {
 
   render() {
 
-    console.log(this.state.venuePhotos);
+    //Global Variables
+    let venues = this.state.venues;
+    console.log(venues);
+    let photos = this.state.venuePhotos;
+    console.log(photos);
     let pre = this.state.venuePhotos.prefix;
     console.log(pre);
     let suff = this.state.venuePhotos.suffix;
     let img = pre + "200x200" + suff;
     console.log(pre + "200x200" + suff);
 
+
     const style = {
       width: '100%',
       height: 'auto'
     }
 
+    //Holds the Search Results. This adjusts the side Bar list and the markers shown
     let searchedList = [];
     console.log(searchedList);
 
-    let venues = this.state.venues;
-    console.log(venues);
+    //Input function for Searchbar
+    let search = (e) => {
+      this.setState({
+        input: e.target.value,
+        showingInfoWindow: false
+      })
+    };
 
+    //Search Bar Functionality
     for(let i = 0; i < venues.length; i++){
       if(venues[i].venue.name.match(this.state.input)){
         console.log(venues[i]);
@@ -134,13 +153,6 @@ export class App extends Component {
         console.log(searchedList);
       }
     }
-
-    let search = (e) => {
-      this.setState({
-        input: e.target.value,
-        showingInfoWindow: false
-      })
-    };
 
     return (
       <div className="App">
