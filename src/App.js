@@ -29,9 +29,9 @@ export class App extends Component {
     $('.hamburger').on('click', ()=>{
       $('.listViewBar').slideToggle(1000);
     });
-    //Calls getValues function
+    //Calls getVenues function. Gets the Venues from foursquare
     this.getVenues();
-    //Calls getVenuePhotos function
+    //Calls getVenuePhotos function. Gets the Photos for the venues from foursquare
     this.getVenuePhotos();
   }
 
