@@ -41,6 +41,7 @@ export class App extends Component {
       activeMarker: position,
       showingInfoWindow: true
     });
+    //Calls getPhotos function. Gets the Photos from foursquare
     this.getPhotos();
   }
 
@@ -54,7 +55,7 @@ export class App extends Component {
     }
   };
 
-  //Get a list of Venues from Foursquare depending on the initialCenter Location
+  //Get a list of Venues from Foursquare depending on the initialCenter Location. Puts the returned list in the venues state
   getVenues = () =>{
     let lat = this.state.initialCenter.lat;
     let lng = this.state.initialCenter.lng;
@@ -73,6 +74,7 @@ export class App extends Component {
 
     axios.get(endPoint + new URLSearchParams(parameters))
       .then(response => {
+        //Passes the returned list of venues to the venues state
         this.setState({
           venues: response.data.response.groups[0].items
         })
@@ -81,7 +83,7 @@ export class App extends Component {
       })
   }
 
-  //Get a list of Photos from Foursquare
+  //Gets Photos for the venues from Foursquare. The returned item from this is a photo url related only to the selected marker from the onMarkerClick function
   getPhotos = () =>{
 
     let venues = this.state.venues;
@@ -90,6 +92,7 @@ export class App extends Component {
     console.log(selectedMarker);
     let venue_id;
 
+    //Cycles through the venues array state. If the selected Marker name from onMarkerClick is the same as one of the venue names in the loop then the matched venue name passes its venue id to venue_id
     for(let i = 0; i < venues.length; i++){
       if (venues[i].venue.name === selectedMarker.name){
         venue_id = venues[i].venue.id;
@@ -105,12 +108,16 @@ export class App extends Component {
 
     axios.get(endPoint + venue_id + "/photos?" + new URLSearchParams(parameters))
       .then((res) => {
+        //Get the returned url prefix
         let pre = res.data.response.photos.items[0].prefix;
         console.log(pre);
+        //Get the returned url suffix
         let suff = res.data.response.photos.items[0].suffix;
         console.log(suff);
+        //Combine the prefix and suffix and add the desired size of the image to the url
         let img = pre + "200x200" + suff;
         console.log(pre + "200x200" + suff);
+        //Pass the final url to the photoSrc state
         this.setState({
           photoSrc: img
         })
@@ -147,7 +154,7 @@ export class App extends Component {
       })
     };
 
-    //Search Bar Functionality
+    //Search Bar Functionality. If what is typed in the input field matches any of the venue names that are being constantly looped, then only return the matched items the searchedList Array
     for(let i = 0; i < venues.length; i++){
       if(venues[i].venue.name.match(this.state.input)){
         console.log(venues[i]);
