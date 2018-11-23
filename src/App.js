@@ -20,15 +20,7 @@ export class App extends Component {
       },
       input: "",
       venues: [],
-      id: {
-            zero: "",
-            one: "",
-            two: "",
-            three: "",
-            four: "",
-            five: ""
-          },
-      photoSrc: []
+      photoSrc: ""
         }
 }
 
@@ -43,13 +35,14 @@ export class App extends Component {
   }
 
   //Marker Click Function
-  onMarkerClick = (props, position, e) =>
-  this.setState({
-    selectedPlace: props,
-    activeMarker: position,
-    showingInfoWindow: true,
-    // test: this.state.selectedPlace.venue.id
-  });
+  onMarkerClick = (props, position, e) =>{
+    this.setState({
+      selectedPlace: props,
+      activeMarker: position,
+      showingInfoWindow: true
+    });
+    this.getPhotos();
+  }
 
   //Map Click Function
   onMapClicked = (props) => {
@@ -81,25 +74,8 @@ export class App extends Component {
     axios.get(endPoint + new URLSearchParams(parameters))
       .then(response => {
         this.setState({
-          venues: response.data.response.groups[0].items,
-          id:{
-              zero: response.data.response.groups[0].items[0].venue.id,
-              one: response.data.response.groups[0].items[1].venue.id,
-              two: response.data.response.groups[0].items[2].venue.id,
-              three: response.data.response.groups[0].items[3].venue.id,
-              four: response.data.response.groups[0].items[4].venue.id,
-              five: response.data.response.groups[0].items[5].venue.id
-            }
+          venues: response.data.response.groups[0].items
         })
-        console.log(response.data.response.groups[0].items);
-        console.log(response.data.response.groups[0].items[0].venue.id);
-        console.log(response.data.response.groups[0].items[1].venue.id);
-        console.log(response.data.response.groups[0].items[2].venue.id);
-        console.log(response.data.response.groups[0].items[3].venue.id);
-        console.log(response.data.response.groups[0].items[4].venue.id);
-        console.log(response.data.response.groups[0].items[5].venue.id);
-
-        this.getPhotos();
       }).catch(error => {
         console.log("ERROR " + error);
       })
@@ -108,13 +84,19 @@ export class App extends Component {
   //Get a list of Photos from Foursquare
   getPhotos = () =>{
 
+    let venues = this.state.venues;
+    console.log(venues);
+    let selectedMarker = this.state.selectedPlace;
+    console.log(selectedMarker);
+    let venue_id;
+
+    for(let i = 0; i < venues.length; i++){
+      if (venues[i].venue.name === selectedMarker.name){
+        venue_id = venues[i].venue.id;
+      }
+    }
+
     const endPoint = "https://api.foursquare.com/v2/venues/"
-    let venue_id = this.state.id.zero;
-    let venue_id_1 = this.state.id.one;
-    let venue_id_2 = this.state.id.two;
-    let venue_id_3 = this.state.id.three;
-    let venue_id_4 = this.state.id.four;
-    let venue_id_5 = this.state.id.five;
     const parameters = {
       client_id: "LRHE1U0H3SYJJCP1IODLD03CZS503LZ4LUYCXHVC3J51RKBM",
       client_secret: "DX4B5ES0CY51EQWZGPGCR5E2S5QW3WXVCU3TJMS3RGYA1AIZ",
@@ -129,84 +111,8 @@ export class App extends Component {
         console.log(suff);
         let img = pre + "200x200" + suff;
         console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
         this.setState({
-          photoSrc: merge
-        })
-        console.log(res.data.response.photos.items[0]);
-        console.log(this.state.photoSrc);
-        return axios.get(endPoint + venue_id_1 + "/photos?" + new URLSearchParams(parameters));
-      })
-      .then((res) => {
-        let pre = res.data.response.photos.items[0].prefix;
-        console.log(pre);
-        let suff = res.data.response.photos.items[0].suffix;
-        console.log(suff);
-        let img = pre + "200x200" + suff;
-        console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
-        this.setState({
-          photoSrc: merge
-        })
-        console.log(res.data.response.photos.items[0]);
-        console.log(this.state.photoSrc);
-        return axios.get(endPoint + venue_id_2 + "/photos?" + new URLSearchParams(parameters));
-      })
-      .then((res) => {
-        let pre = res.data.response.photos.items[0].prefix;
-        console.log(pre);
-        let suff = res.data.response.photos.items[0].suffix;
-        console.log(suff);
-        let img = pre + "200x200" + suff;
-        console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
-        this.setState({
-          photoSrc: merge
-        })
-        console.log(res.data.response.photos.items[0]);
-        console.log(this.state.photoSrc);
-        return axios.get(endPoint + venue_id_3 + "/photos?" + new URLSearchParams(parameters));
-      })
-      .then((res) => {
-        let pre = res.data.response.photos.items[0].prefix;
-        console.log(pre);
-        let suff = res.data.response.photos.items[0].suffix;
-        console.log(suff);
-        let img = pre + "200x200" + suff;
-        console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
-        this.setState({
-          photoSrc: merge
-        })
-        console.log(res.data.response.photos.items[0]);
-        console.log(this.state.photoSrc);
-        return axios.get(endPoint + venue_id_4 + "/photos?" + new URLSearchParams(parameters));
-      })
-      .then((res) => {
-        let pre = res.data.response.photos.items[0].prefix;
-        console.log(pre);
-        let suff = res.data.response.photos.items[0].suffix;
-        console.log(suff);
-        let img = pre + "200x200" + suff;
-        console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
-        this.setState({
-          photoSrc: merge
-        })
-        console.log(res.data.response.photos.items[0]);
-        console.log(this.state.photoSrc);
-        return axios.get(endPoint + venue_id_5 + "/photos?" + new URLSearchParams(parameters));
-      })
-      .then((res) => {
-        let pre = res.data.response.photos.items[0].prefix;
-        console.log(pre);
-        let suff = res.data.response.photos.items[0].suffix;
-        console.log(suff);
-        let img = pre + "200x200" + suff;
-        console.log(pre + "200x200" + suff);
-        let merge = this.state.photoSrc.concat(img);
-        this.setState({
-          photoSrc: merge
+          photoSrc: img
         })
         console.log(res.data.response.photos.items[0]);
         console.log(this.state.photoSrc);
@@ -288,11 +194,8 @@ export class App extends Component {
                 visible={this.state.showingInfoWindow}>
                   <div>
                     <h1>{this.state.selectedPlace.name}</h1>
-                    <h1>{this.state.selectedPlace.id}</h1>
-                    {photoSrc.map(src =>
-                      <img src={src} alt={this.state.selectedPlace.name}/>
-                    )}
-
+                    <img src={photoSrc} key={photoSrc} alt={this.state.selectedPlace.name}/>
+                    {console.log(this.state.selectedPlace)}
                   </div>
               </InfoWindow>
           </Map>
