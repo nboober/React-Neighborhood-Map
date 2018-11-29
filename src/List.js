@@ -6,9 +6,9 @@ export class List extends Component{
   constructor(props){
     super(props);
     this.state = {
-      showingInfoWindow: this.props.infoWindow,
-      activeMarker: this.props.marker,
-      selectedPlace: this.props.place,
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
     }
 }
 
@@ -22,10 +22,27 @@ export class List extends Component{
 
   render() {
 
+    console.log(this.state.selectedPlace);
+    console.log(this.state.activeMarker);
+    console.log(this.state.showingInfoWindow);
+
     return(
       <div>
         {this.props.locations.map(list => (
-          <div onClick={(props, position, e) => this.props.onHandleClick(list)} key={list.venue.id} className="listSelection">
+          <div onClick={(infoWindow, place, e) => {
+            this.setState({
+              selectedPlace: list,
+              activeMarker: list,
+              showingInfoWindow: true
+              })
+              this.props.onHandleListClick(list);
+            }
+          }
+           name={list.venue.name}
+           position={list.venue.position}
+           key={list.venue.id}
+           className="listSelection"
+          >
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
             <p>{list.venue.name}</p>
            </div>

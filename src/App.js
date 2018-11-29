@@ -11,6 +11,7 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      selectedListPlace: {},
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
@@ -34,11 +35,21 @@ export class App extends Component {
     this.getVenues();
   }
 
+  //List Click Function
+  onListClick = (props, marker, e) =>{
+    this.setState({
+      selectedListPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+    console.log(this.state.selectedListPlace);
+  }
+
   //Marker Click Function
-  onMarkerClick = (props, position, e) =>{
+  onMarkerClick = (props, marker, e) =>{
     this.setState({
       selectedPlace: props,
-      activeMarker: position,
+      activeMarker: marker,
       showingInfoWindow: true
     });
     //Calls getPhotos function. Gets the Photos from foursquare
@@ -88,13 +99,13 @@ export class App extends Component {
 
     let venues = this.state.venues;
     console.log(venues);
-    let selectedMarker = this.state.selectedPlace;
-    console.log(selectedMarker);
+    let selectedPlace = this.state.selectedPlace;
+    console.log(selectedPlace);
     let venue_id;
 
     //Cycles through the venues array state. If the selected Marker name from onMarkerClick is the same as one of the venue names in the loop then the matched venue name passes its venue id to venue_id
     for(let i = 0; i < venues.length; i++){
-      if (venues[i].venue.name === selectedMarker.name){
+      if (venues[i].venue.name === selectedPlace.name){
         venue_id = venues[i].venue.id;
       }
     }
@@ -136,6 +147,10 @@ export class App extends Component {
     console.log(venues);
     let photoSrc = this.state.photoSrc;
     console.log(photoSrc);
+    console.log(this.state.selectedListPlace);
+    console.log(this.state.selectedPlace);
+    console.log(this.state.activeMarker);
+    console.log(this.state.showingInfoWindow);
 
     const style = {
       width: '100%',
@@ -173,7 +188,7 @@ export class App extends Component {
             <form>
               <input type="text" placeholder="Search By Location Here..." onChange={search} value={this.state.input}/>
             </form>
-            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleClick={this.onMarkerClick}/>
+            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleListClick={this.onListClick}/>
           </div>
         </header>
 
@@ -187,7 +202,6 @@ export class App extends Component {
           >
 
              {searchedList.map(marker => (
-
               <Marker
                 key = {marker.venue.id}
                 name = {marker.venue.name}
