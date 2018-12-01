@@ -156,7 +156,7 @@ export class App extends Component {
 
     const style = {
       width: '100%',
-      height: 'auto'
+      height: '100vh'
     }
 
     //Holds the Search Results. This adjusts the side Bar list and the markers shown
@@ -185,14 +185,20 @@ export class App extends Component {
         <header className="App-header">
           <img className="hamburger" src={hamburger} alt="hamburger icon" />
             <div className="title">My Neighborhood App</div>
-
-          <div className="listViewBar" style={{display: "none"}}>
-            <form>
-              <input type="text" placeholder="Search By Location Here..." onChange={search} value={this.state.input}/>
-            </form>
-            <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleListClick={this.onListClick}/>
-          </div>
         </header>
+
+        <div className="searchHolder">
+          <form>
+            <input className="search" type="text" placeholder="Search By Location Here... (Case Sensitive)" onChange={search} value={this.state.input}/>
+          </form>
+        </div>
+
+        <div className="listViewBar" style={{display: "none"}}>
+
+          <div className="list">
+          <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleListClick={this.onListClick}/>
+          </div>
+        </div>
 
         <div className="mapArea" ref='map'>
           <Map google={this.props.google} zoom={14}
