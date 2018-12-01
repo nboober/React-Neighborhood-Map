@@ -39,10 +39,12 @@ export class App extends Component {
   onListClick = (props, marker, e) =>{
     this.setState({
       selectedListPlace: props,
+      selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
     console.log(this.state.selectedListPlace);
+
   }
 
   //Marker Click Function
@@ -202,9 +204,11 @@ export class App extends Component {
           >
 
              {searchedList.map(marker => (
+               console.log(marker),
               <Marker
                 key = {marker.venue.id}
                 name = {marker.venue.name}
+                title = {marker.venue.name}
                 position = {marker.venue.location}
                 onClick={this.onMarkerClick}
               />
