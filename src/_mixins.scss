@@ -1,0 +1,50 @@
+$dark-gray:  rgb(50, 48, 50);
+
+@mixin app-header{
+  background-color: $dark-gray;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+@mixin title($size){
+  color: white;
+  float: right;
+  font-size: $size;
+}
+@mixin hamburger($width){
+  width: $width;
+  padding: 5px;
+}
+
+@mixin list-viewbar($width){
+  background-color: $dark-gray;
+  color: white;
+  width: $width;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+}
+
+@mixin search($height, $font-size){
+  width: 100%;
+  height: $height;
+  font-size: $font-size;
+}
+
+@mixin list($font-size, $overflow){
+  width: 100%;
+  height: 100%;
+  font-size: $font-size;
+  overflow-y: $overflow;
+}
+
+@mixin marker-icon($width){
+  width: $width;
+  padding: 5px;
+  float: left;
+}
+
+@mixin list-selection($padd-top, $padd-bottom){
+  padding-top: $padd-top;
+  padding-bottom: $padd-bottom;
+}
