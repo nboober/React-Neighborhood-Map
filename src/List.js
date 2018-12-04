@@ -13,11 +13,11 @@ export class List extends Component{
 }
 
   componentDidMount() {
-    $('.listSelection').on('mouseenter', (event)=>{
+    $('.listSelection').on('mouseEnter', (event)=>{
       $(event.currentTarget).css({border: "solid white"});
-    }).on('mouseleave', (event)=>{
+    }).on('mouseLeave', (event)=>{
       $(event.currentTarget).css({border: "hidden"});
-    })
+    });
   }
 
   render() {
@@ -27,9 +27,9 @@ export class List extends Component{
     console.log(this.state.showingInfoWindow);
 
     return(
-      <div Aria-label="List of Venues">
+      <div aria-label="List of Venues">
         {this.props.locations.map(list => (
-          <div onClick={(infoWindow, place, e) => {
+          <div className="listSelection" onClick={(infoWindow, place, e) => {
             this.setState({
               selectedPlace: list,
               activeMarker: list,
@@ -41,7 +41,6 @@ export class List extends Component{
             name={list.venue.name}
             position={list.venue.position}
             key={list.venue.id}
-            className="listSelection"
           >
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
             <p>{list.venue.name}</p>

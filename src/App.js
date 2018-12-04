@@ -185,23 +185,23 @@ export class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img className="hamburger" src={hamburger} alt="hamburger icon" Role="button" Aria-label="Button for Drop Down list of Venues"/>
+          <img className="hamburger" src={hamburger} alt="hamburger icon" role="button" aria-label="Button for Drop Down list of Venues"/>
             <div className="title">My Neighborhood App</div>
         </header>
 
         <div className="searchHolder">
-          <form Role="search">
-            <input className="search" type="text" placeholder="Search By Location Here... (Case Sensitive)" Aria-label="Venue Search" onChange={search} value={this.state.input}/>
+          <form role="search">
+            <input className="search" type="text" placeholder="Search By Location Here... (Case Sensitive)" aria-label="Venue Search" onChange={search} value={this.state.input}/>
           </form>
         </div>
 
         <div className="listViewBar" style={{display: "none"}}>
-          <div className="list" Aria-hidden="true">
+          <div className="list" aria-hidden="true">
           <List infoWindow={this.state.showingInfoWindow} marker={this.state.activeMarker} place={this.state.selectedPlace} locations= {searchedList} center={this.state.initialCenter} onHandleListClick={this.onListClick}/>
           </div>
         </div>
 
-        <div className="mapArea" ref='map' Aria-label="List of Venues">
+        <div className="mapArea" ref='map' aria-label="List of Venues">
           <Map google={this.props.google} zoom={14}
             style={style}
             initialCenter={
