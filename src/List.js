@@ -27,7 +27,7 @@ export class List extends Component{
     console.log(this.state.showingInfoWindow);
 
     return(
-      <div>
+      <div Aria-label="List of Venues">
         {this.props.locations.map(list => (
           <div onClick={(infoWindow, place, e) => {
             this.setState({
@@ -38,10 +38,10 @@ export class List extends Component{
               this.props.onHandleListClick(list);
             }
           }
-           name={list.venue.name}
-           position={list.venue.position}
-           key={list.venue.id}
-           className="listSelection"
+            name={list.venue.name}
+            position={list.venue.position}
+            key={list.venue.id}
+            className="listSelection"
           >
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
             <p>{list.venue.name}</p>
