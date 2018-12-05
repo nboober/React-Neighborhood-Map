@@ -13,10 +13,10 @@ export class List extends Component{
 }
 
   componentDidMount() {
-    $('.listSelection').on('mouseEnter', (event)=>{
-      $(event.currentTarget).css({border: "solid white"});
-    }).on('mouseLeave', (event)=>{
-      $(event.currentTarget).css({border: "hidden"});
+    $('.listSelection').on('mouseenter', (event)=>{
+      $(event.currenttarget).css({border: "solid white"});
+    }).on('mouseleave', (event)=>{
+      $(event.currenttarget).css({border: "hidden"});
     });
   }
 
@@ -41,6 +41,7 @@ export class List extends Component{
             name={list.venue.name}
             position={list.venue.position}
             key={list.venue.id}
+            className="listSelection"
           >
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
             <p>{list.venue.name}</p>

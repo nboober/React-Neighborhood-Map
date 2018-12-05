@@ -39,12 +39,13 @@ export class App extends Component {
   onListClick = (props, marker, e) =>{
     this.setState({
       selectedListPlace: props,
-      selectedPlace: props,
+      selectedPlace: props.venue,
       activeMarker: marker,
       showingInfoWindow: true
     });
-    console.log(this.state.selectedListPlace);
 
+    //Calls getPhotos function. Gets the Photos from foursquare
+    this.getPhotos();
   }
 
   //Marker Click Function
