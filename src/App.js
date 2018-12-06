@@ -42,10 +42,11 @@ export class App extends Component {
       selectedPlace: props.venue,
       activeMarker: marker,
       showingInfoWindow: true
+    },
+    function(){
+      //Calls getPhotos function. Gets the Photos from foursquare
+      this.getPhotos();
     });
-
-    //Calls getPhotos function. Gets the Photos from foursquare
-    this.getPhotos();
   }
 
   //Marker Click Function
@@ -54,9 +55,11 @@ export class App extends Component {
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
+    },
+    function(){
+      //Calls getPhotos function. Gets the Photos from foursquare
+      this.getPhotos();
     });
-    //Calls getPhotos function. Gets the Photos from foursquare
-    this.getPhotos();
   }
 
   //Map Click Function
