@@ -20,9 +20,7 @@ export class App extends Component {
       },
       input: "",
       venues: [],
-      photoSrc: "",
-      lat: "",
-      lng: ""
+      photoSrc: ""
         }
 }
 
@@ -40,27 +38,20 @@ export class App extends Component {
   onListClick = (props, e) =>{
     this.setState({
       selectedPlace: props.venue,
-      lat: props.venue.location.lat,
-      lng: props.venue.location.lng,
+      activeMarker: props.venue.location,
       showingInfoWindow: true
     },
-    function(){
-      //Sets the position of the infoWindow
-      this.setState({
-        activeMarker: "lat: " + this.state.lat + ", " + "lng: " + this.state.lng
-      },
       function(){
         //Calls getPhotos function. Gets the Photos from foursquare
         this.getPhotos();
       });
-    });
   }
 
   //Marker Click Function
   onMarkerClick = (props, marker, e) =>{
     this.setState({
       selectedPlace: props,
-      activeMarker: marker.position,
+      activeMarker: props.position,
       showingInfoWindow: true
     },
     function(){
@@ -162,11 +153,6 @@ export class App extends Component {
     console.log(venues);
     let photoSrc = this.state.photoSrc;
     console.log(photoSrc);
-    console.log(this.state.selectedPlace);
-    console.log(this.state.lat);
-    console.log(this.state.lng);
-    console.log(this.state.activeMarker);
-    console.log(this.state.showingInfoWindow);
 
     const style = {
       width: '100%',

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import marker from './marker.png';
-import $ from 'jquery';
 
 export class List extends Component{
   constructor(props){
@@ -12,19 +11,7 @@ export class List extends Component{
     }
 }
 
-  componentDidMount() {
-    $('.listSelection').on('mouseenter', (event)=>{
-      $(event.currenttarget).css({border: "solid white"});
-    }).on('mouseleave', (event)=>{
-      $(event.currenttarget).css({border: "hidden"});
-    });
-  }
-
   render() {
-
-    console.log(this.state.selectedPlace);
-    console.log(this.state.activeMarker);
-    console.log(this.state.showingInfoWindow);
 
     return(
       <div aria-label="List of Venues">
@@ -41,7 +28,6 @@ export class List extends Component{
             name={list.venue.name}
             position={list.venue.position}
             key={list.venue.id}
-            className="listSelection"
           >
             <img className="markerIcon" src={marker} alt="Decorative Map Marker Icon"/>
             <p>{list.venue.name}</p>
