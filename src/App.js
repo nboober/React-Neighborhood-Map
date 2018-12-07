@@ -94,7 +94,7 @@ export class App extends Component {
           venues: response.data.response.groups[0].items
         })
       }).catch(error => {
-        alert("ERROR! Venues Could not be Rendered");
+        alert("ERROR! Venues Could not be Rendered. " + "(" + error + ")");
         console.log("ERROR " + error);
       })
   }
@@ -141,7 +141,7 @@ export class App extends Component {
         console.log(this.state.photoSrc);
       })
       .catch((error) => {
-        // alert("ERROR! Photos could not be rendered");
+        alert("ERROR! Photos could not be rendered. " + "(" + error + ")");
         console.log("ERROR " + error);
       })
   }
