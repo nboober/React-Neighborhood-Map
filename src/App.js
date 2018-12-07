@@ -11,7 +11,6 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedListPlace: {},
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
@@ -21,7 +20,9 @@ export class App extends Component {
       },
       input: "",
       venues: [],
-      photoSrc: ""
+      photoSrc: "",
+      lat: "",
+      lng: ""
         }
 }
 
@@ -36,16 +37,22 @@ export class App extends Component {
   }
 
   //List Click Function
-  onListClick = (props, marker, e) =>{
+  onListClick = (props, e) =>{
     this.setState({
-      selectedListPlace: props,
       selectedPlace: props.venue,
-      activeMarker: marker,
+      lat: props.venue.location.lat,
+      lng: props.venue.location.lng,
       showingInfoWindow: true
     },
     function(){
-      //Calls getPhotos function. Gets the Photos from foursquare
-      this.getPhotos();
+      //Sets the position of the infoWindow
+      this.setState({
+        activeMarker: "lat: " + this.state.lat + ", " + "lng: " + this.state.lng
+      },
+      function(){
+        //Calls getPhotos function. Gets the Photos from foursquare
+        this.getPhotos();
+      });
     });
   }
 
@@ -53,7 +60,7 @@ export class App extends Component {
   onMarkerClick = (props, marker, e) =>{
     this.setState({
       selectedPlace: props,
-      activeMarker: marker,
+      activeMarker: marker.position,
       showingInfoWindow: true
     },
     function(){
@@ -143,7 +150,7 @@ export class App extends Component {
         console.log(this.state.photoSrc);
       })
       .catch((error) => {
-        alert("ERROR! Photos could not be rendered");
+        // alert("ERROR! Photos could not be rendered");
         console.log("ERROR " + error);
       })
   }
@@ -155,8 +162,9 @@ export class App extends Component {
     console.log(venues);
     let photoSrc = this.state.photoSrc;
     console.log(photoSrc);
-    console.log(this.state.selectedListPlace);
     console.log(this.state.selectedPlace);
+    console.log(this.state.lat);
+    console.log(this.state.lng);
     console.log(this.state.activeMarker);
     console.log(this.state.showingInfoWindow);
 
@@ -215,7 +223,6 @@ export class App extends Component {
           >
 
              {searchedList.map(marker => (
-               console.log(marker),
               <Marker
                 key = {marker.venue.id}
                 name = {marker.venue.name}
@@ -224,9 +231,8 @@ export class App extends Component {
                 onClick={this.onMarkerClick}
               />
              ))}
-
             <InfoWindow
-                marker={this.state.activeMarker}
+                position={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                   <div>
                     <h1>{this.state.selectedPlace.name}</h1>
