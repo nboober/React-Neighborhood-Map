@@ -38,8 +38,8 @@ The functionality of this map includes:
 - [x] Write code to render at least 5 locations of interest within or nearby the neighborhood
 - [x] Implement these locations to be viewable in the list view bar
 - [x] Implement a filter option to filter this list in the list view bar and their points respectively
-- [x] Add on click functionality to the markers so that third party information(ex. yelp, Wikipedia, Flickr images) about the location are displayed when the markers are clicked on. 
-- [ ] Add on click functionality to the List View Bar so that third party information(ex. yelp, Wikipedia, Flickr images) about the location is displayed when an option from the list is clicked on. This information should appear in the infowindow above the marker just as if the marker was selected.
+- [x] Add on click functionality to the markers so that third party information(ex. yelp, Wikipedia, Flickr images) about the location are displayed when the markers are clicked on.
+- [x] Add on click functionality to the List View Bar so that third party information(ex. yelp, Wikipedia, Flickr images) about the location is displayed when an option from the list is clicked on. This information should appear in the infowindow above the marker just as if the marker was selected.
 
 ## Create-React-App
 
