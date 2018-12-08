@@ -8,6 +8,22 @@ The functionality of this map includes:
 - A list view to support simple browsing of all locations.
 - Third-party APIs that provide additional information about each of these locations (such as StreetView images, Wikipedia articles, Yelp reviews, etc)
 
+## Local installation
+
+ 1. Note: Make sure you have the latest Node.js installed.
+ 2. Navigate to the directory that contains the project.
+ 3. Open up the command line in this location.
+ 4. Run 'npm install'.
+ 5. Run 'npm start'.
+ 6. Open http://localhost:3000
+
+## How To Use the App
+
+1. The map will open up on a designated location.
+2. From That location, 5 nearby food places are located.
+3. Select the marker on the map to bring up the name and a picture of the designated location.
+4. A sidebar is also available by clicking the hamburger button for easier searching options.
+
 ## Libraries Used
 
 - React

@@ -94,7 +94,7 @@ export class App extends Component {
           venues: response.data.response.groups[0].items
         })
       }).catch(error => {
-        alert("ERROR! Venues Could not be Rendered. " + "(" + error + ")");
+        alert(`ERROR! Venues could not be rendered. (${error})`);
         console.log("ERROR " + error);
       })
   }
@@ -141,7 +141,7 @@ export class App extends Component {
         console.log(this.state.photoSrc);
       })
       .catch((error) => {
-        alert("ERROR! Photos could not be rendered. " + "(" + error + ")");
+        alert(`ERROR! Photos could not be rendered. (${error})`);
         console.log("ERROR " + error);
       })
   }
@@ -233,6 +233,15 @@ export class App extends Component {
     );
   }
 }
+
+const LoadingContainer = (props) => (
+  <div>Loading Container...</div>
+);
+
+if(!LoadingContainer){
+  console.log("Error: Map Could Not Load Properly");
+}
+
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyC9Mj0z9LIsiHif3l_FiDMJL4l4o083lOA')
 })(App)
