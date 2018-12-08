@@ -237,11 +237,11 @@ export class App extends Component {
 const LoadingContainer = (props) => (
   <div>Loading Container...</div>
 );
-
-if(!LoadingContainer){
+if(!GoogleApiWrapper){
+  alert(`Error: Map Could Not Load Properly`);
   console.log("Error: Map Could Not Load Properly");
 }
-
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyC9Mj0z9LIsiHif3l_FiDMJL4l4o083lOA')
+  apiKey: ('AIzaSyC9Mj0z9LIsiHif3l_FiDMJL4l4o083lOA'),
+  LoadingContainer: LoadingContainer
 })(App)

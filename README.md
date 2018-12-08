@@ -15,7 +15,6 @@ The functionality of this map includes:
  3. Open up the command line in this location.
  4. Run 'npm install'.
  5. Run 'npm start'.
- 6. Open http://localhost:3000
 
 ## How To Use the App
 
