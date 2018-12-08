@@ -16,7 +16,7 @@ export class List extends Component{
     return(
       <div aria-label="List of Venues">
         {this.props.locations.map(list => (
-          <div className="listSelection" onClick={(infoWindow, place, e) => {
+          <div tabindex="list" className="listSelection" onClick={(infoWindow, place, e) => {
             this.setState({
               selectedPlace: list,
               activeMarker: list,

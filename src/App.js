@@ -219,6 +219,7 @@ export class App extends Component {
              ))}
             <InfoWindow
                 position={this.state.activeMarker}
+                onClose={this.onMapClicked}
                 visible={this.state.showingInfoWindow}>
                   <div>
                     <h1>{this.state.selectedPlace.name}</h1>
